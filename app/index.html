@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>EstudioClaro</title>
+  <link rel="stylesheet" href="css/estilos.css">
+</head>
+<body>
+  <header class="barra">
+    <div class="envoltorio">
+      <p class="marca">Estudio<span>Claro</span></p>
+      <p class="ruta">localhost / tuapp</p>
+    </div>
+  </header>
+
+  <main class="envoltorio">
+    <section class="hero">
+      <div>
+        <h1>La siguiente sesión, escrita antes de empezar.</h1>
+        <p>EstudioClaro guarda la materia, el tiempo y el objetivo de cada bloque de estudio. Sirve para decidir en qué se va a trabajar y no perder ese plan al cerrar la página.</p>
+      </div>
+      <img src="img/portada.jpg" alt="Ilustración de un escritorio de estudio con bloques de color">
+    </section>
+
+    <section class="razones" aria-label="Para qué sirve">
+      <article>
+        <img src="img/enfoque.jpg" alt="Bloques de color que representan tiempos de estudio">
+        <h2>Un bloque a la vez</h2>
+        <p>Cada registro dura entre 10 y 180 minutos. El límite evita planes vagos o jornadas imposibles.</p>
+      </article>
+      <article>
+        <img src="img/registro.jpg" alt="Tarjetas apiladas que representan sesiones guardadas">
+        <h2>Objetivo visible</h2>
+        <p>La materia no basta. La sesión también pide qué se quiere terminar en ese tiempo.</p>
+      </article>
+      <article>
+        <img src="img/notas.jpg" alt="Cuaderno con líneas y una marca de avance">
+        <h2>Se queda en el navegador</h2>
+        <p>La lista se guarda en este equipo. No hay cuenta ni servidor de datos detrás de la página.</p>
+      </article>
+    </section>
+
+    <section class="planificador" aria-labelledby="titulo-plan">
+      <h2 id="titulo-plan">Sesiones de la semana</h2>
+      <p class="resumen"><span id="conteo-sesiones">0</span> sesiones · <span id="total-minutos">0</span> minutos</p>
+      <form id="formulario-sesion">
+        <label>Materia
+          <input name="materia" type="text" maxlength="60" required placeholder="Cálculo">
+        </label>
+        <label>Minutos
+          <input name="minutos" type="number" min="10" max="180" value="45" required>
+        </label>
+        <label>Objetivo
+          <input name="objetivo" type="text" maxlength="120" required placeholder="Resolver los ejercicios 4 al 8">
+        </label>
+        <button type="submit">Agregar</button>
+      </form>
+      <p id="estado-vacio" class="vacio">Todavía no hay sesiones. Agrega la primera con el formulario.</p>
+      <ul id="lista-sesiones" class="lista"></ul>
+      <p><button id="limpiar" class="secundario" type="button">Vaciar lista</button></p>
+    </section>
+  </main>
+
+  <footer class="pie">
+    <div class="envoltorio">
+      <p>EstudioClaro · aplicación estática empaquetada para Apache en la ruta /tuapp.</p>
+    </div>
+  </footer>
+  <script src="js/app.js"></script>
+</body>
+</html>

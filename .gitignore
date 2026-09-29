@@ -1,0 +1,6 @@
+.DS_Store
+logs/
+.build/
+.readme-listo.md
+fuentes/img-original/
+*.bmp

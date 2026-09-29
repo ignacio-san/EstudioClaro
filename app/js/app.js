@@ -1,0 +1,89 @@
+var CLAVE = "estudioclaro-sesiones";
+var formulario = document.querySelector("#formulario-sesion");
+var lista = document.querySelector("#lista-sesiones");
+var vacio = document.querySelector("#estado-vacio");
+var total = document.querySelector("#total-minutos");
+var conteo = document.querySelector("#conteo-sesiones");
+
+function leer() {
+  try {
+    var guardado = localStorage.getItem(CLAVE);
+    if (!guardado) {
+      return [];
+    }
+    return JSON.parse(guardado);
+  } catch (error) {
+    return [];
+  }
+}
+
+function guardar(sesiones) {
+  localStorage.setItem(CLAVE, JSON.stringify(sesiones));
+}
+
+function minutosTotales(sesiones) {
+  var suma = 0;
+  sesiones.forEach(function (sesion) {
+    suma += sesion.minutos;
+  });
+  return suma;
+}
+
+function pintar() {
+  var sesiones = leer();
+  lista.innerHTML = "";
+  sesiones.forEach(function (sesion, indice) {
+    var item = document.createElement("li");
+    item.className = "sesion";
+    var texto = document.createElement("div");
+    var titulo = document.createElement("strong");
+    titulo.textContent = sesion.materia;
+    var detalle = document.createElement("p");
+    detalle.textContent = sesion.minutos + " min · " + sesion.objetivo;
+    texto.appendChild(titulo);
+    texto.appendChild(detalle);
+    var boton = document.createElement("button");
+    boton.type = "button";
+    boton.className = "secundario";
+    boton.textContent = "Quitar";
+    boton.addEventListener("click", function () {
+      var actuales = leer();
+      actuales.splice(indice, 1);
+      guardar(actuales);
+      pintar();
+    });
+    item.appendChild(texto);
+    item.appendChild(boton);
+    lista.appendChild(item);
+  });
+  vacio.hidden = sesiones.length > 0;
+  conteo.textContent = String(sesiones.length);
+  total.textContent = String(minutosTotales(sesiones));
+}
+
+formulario.addEventListener("submit", function (evento) {
+  evento.preventDefault();
+  var datos = new FormData(formulario);
+  var materia = String(datos.get("materia")).trim();
+  var minutos = Number(datos.get("minutos"));
+  var objetivo = String(datos.get("objetivo")).trim();
+  if (!materia || !objetivo || minutos < 10 || minutos > 180) {
+    return;
+  }
+  var sesiones = leer();
+  sesiones.unshift({
+    materia: materia,
+    minutos: minutos,
+    objetivo: objetivo
+  });
+  guardar(sesiones);
+  formulario.reset();
+  pintar();
+});
+
+document.querySelector("#limpiar").addEventListener("click", function () {
+  guardar([]);
+  pintar();
+});
+
+pintar();
