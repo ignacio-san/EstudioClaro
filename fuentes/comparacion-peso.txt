@@ -1,0 +1,19 @@
+Comparacion de peso
+
+portada.bmp: 3360054 bytes
+portada.jpg: 21218 bytes
+
+enfoque.bmp: 3360054 bytes
+enfoque.jpg: 22357 bytes
+
+registro.bmp: 3360054 bytes
+registro.jpg: 19985 bytes
+
+notas.bmp: 3360054 bytes
+notas.jpg: 58335 bytes
+
+estilos.css: 3717 bytes
+estilos.min.css: 2778 bytes
+
+app.js: 2550 bytes
+app.min.js: 2139 bytes
