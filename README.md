@@ -21,12 +21,7 @@ Aplicación web estática para anotar sesiones de estudio: materia, minutos y ob
 
 La rama `main` registra un commit por cada cierre de etapa: página inicial, optimización y minificación, este documento, la configuración de Apache y el ajuste del script de arranque.
 
-Para publicar el repositorio en GitHub o GitLab hace falta Git en el equipo y una cuenta propia:
-
-```bash
-git remote add origin URL-DEL-REPOSITORIO
-git push -u origin main
-```
+El repositorio está publicado en https://github.com/ignacio-san/EstudioClaro.
 
 ## Servidor
 
