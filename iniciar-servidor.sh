@@ -32,7 +32,7 @@ DocumentRoot "$RUN/vacio"
 </Directory>
 <VirtualHost 127.0.0.1:8080>
     ServerName localhost
-    Alias /tuapp "$RUN/app"
+    Alias /IgnacioSanchez "$RUN/app"
     <Directory "$RUN/app">
         Options FollowSymLinks
         AllowOverride None
@@ -46,4 +46,4 @@ if [ -f /tmp/estudioclaro-httpd.pid ]; then
   sleep 1
 fi
 /usr/sbin/httpd -f "$RUN/tuapp.conf" -k start
-echo "Aplicacion disponible en http://127.0.0.1:8080/tuapp/"
+echo "Aplicacion disponible en /IgnacioSanchez"

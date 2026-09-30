@@ -1,12 +1,12 @@
 # EstudioClaro
 
-Aplicación web estática para anotar sesiones de estudio: materia, minutos y objetivo. La lista se guarda en el navegador. El paquete publicado se sirve con Apache en `http://127.0.0.1:8080/tuapp/`.
+Aplicación web estática para anotar sesiones de estudio: materia, minutos y objetivo. La lista se guarda en el navegador. El paquete publicado se sirve con Apache en `/IgnacioSanchez`.
 
 ## Estructura
 
 - `app/` — archivos listos para el servidor (`index.html`, `css/`, `js/`, `img/`).
 - `fuentes/` — CSS y JavaScript legibles, antes de minificar.
-- `config/tuapp.conf` — Virtual Host de Apache (puerto 8080 y alias `/tuapp`).
+- `config/tuapp.conf` — Virtual Host de Apache (puerto 8080 y alias `/IgnacioSanchez`).
 - `EstudioClaro.zip` — paquete comprimido de `app/`.
 
 ## Empaquetado
@@ -30,13 +30,13 @@ git push -u origin main
 
 ## Servidor
 
-La definición de referencia está en `config/tuapp.conf`: escucha en `127.0.0.1:8080`, `ServerName localhost` y el alias `/tuapp` apunta a la carpeta `app/`.
+La definición de referencia está en `config/tuapp.conf`: escucha en el puerto 8080, `ServerName localhost` y el alias `/IgnacioSanchez` apunta a la carpeta `app/`.
 
 ```bash
 sh iniciar-servidor.sh
 ```
 
-El script copia `app/` a un directorio de ejecución y arranca Apache con ese Virtual Host. En macOS, el proceso de Apache a veces no puede leer el Escritorio; la copia evita ese bloqueo. Abrir `http://127.0.0.1:8080/tuapp/`.
+El script copia `app/` a un directorio de ejecución y arranca Apache con ese Virtual Host. En macOS, el proceso de Apache a veces no puede leer el Escritorio; la copia evita ese bloqueo. Abrir `/IgnacioSanchez`.
 
 ```bash
 sh detener-servidor.sh

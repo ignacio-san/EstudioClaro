@@ -61,8 +61,7 @@ a {
 .ruta {
   margin: 0;
   font-size: 0.85rem;
-  letter-spacing: 0.04em;
-  text-transform: uppercase;
+  letter-spacing: 0.02em;
 }
 
 .hero {
