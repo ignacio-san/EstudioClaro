@@ -1,4 +1,12 @@
 #!/bin/sh
-DIR=$(CDPATH= cd -- "$(dirname "$0")" && pwd)
-/usr/sbin/httpd -f "$DIR/config/tuapp.conf" -k stop
-echo "Servidor detenido."
+if [ -f /tmp/estudioclaro-run/tuapp.conf ]; then
+  /usr/sbin/httpd -f /tmp/estudioclaro-run/tuapp.conf -k stop
+  echo "Servidor detenido."
+else
+  if [ -f /tmp/estudioclaro-httpd.pid ]; then
+    kill "$(cat /tmp/estudioclaro-httpd.pid)"
+    echo "Servidor detenido."
+  else
+    echo "No hay un servidor iniciado."
+  fi
+fi

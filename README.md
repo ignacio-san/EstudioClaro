@@ -19,7 +19,7 @@ Aplicación web estática para anotar sesiones de estudio: materia, minutos y ob
 
 ## Versionamiento
 
-La rama `main` registra cuatro commits, uno por cada cierre de etapa: página inicial, optimización y minificación, este documento y la configuración de Apache.
+La rama `main` registra un commit por cada cierre de etapa: página inicial, optimización y minificación, este documento, la configuración de Apache y el ajuste del script de arranque.
 
 Para publicar el repositorio en GitHub o GitLab hace falta Git en el equipo y una cuenta propia:
 
@@ -30,16 +30,16 @@ git push -u origin main
 
 ## Servidor
 
-Apache escucha en `127.0.0.1:8080`. El alias `/tuapp` apunta a la carpeta `app/`.
+La definición de referencia está en `config/tuapp.conf`: escucha en `127.0.0.1:8080`, `ServerName localhost` y el alias `/tuapp` apunta a la carpeta `app/`.
 
 ```bash
-./iniciar-servidor.sh
+sh iniciar-servidor.sh
 ```
 
-Abrir `http://127.0.0.1:8080/tuapp/`.
+El script copia `app/` a un directorio de ejecución y arranca Apache con ese Virtual Host. En macOS, el proceso de Apache a veces no puede leer el Escritorio; la copia evita ese bloqueo. Abrir `http://127.0.0.1:8080/tuapp/`.
 
 ```bash
-./detener-servidor.sh
+sh detener-servidor.sh
 ```
 
-El puerto 80 no se usa porque en este sistema exige permisos de administrador. El puerto queda declarado en la directiva `Listen` del Virtual Host.
+El puerto 80 no se usa porque en este sistema exige permisos de administrador. El puerto queda declarado en la directiva `Listen`.
